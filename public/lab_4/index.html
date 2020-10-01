@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300|Cinzel+Decorative:700" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <title>Alex Leitch's Lab 4</title>
+        <style>
+        body {
+            font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
+            background: #3AAFAB;
+            color: #fff;
+            padding: 50px 0;
+          }
+          
+          .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+          }
+          
+          .container * {
+            box-sizing: border-box;
+          }
+          
+          .flex-outer,
+          .flex-inner {
+            list-style-type: none;
+            padding: 0px;
+          }
+          
+          .flex-outer {
+            max-width: 800px;
+            margin: 0 auto;
+            justify-content:flex-start;
+          }
+          
+          .flex-outer li,
+          .flex-inner {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+          }
+          
+          .flex-inner {
+            padding: 0 8px;
+            justify-content: space-between;  
+          }
+          
+          .flex-outer > li:not(:last-child) {
+            margin-bottom: 20px;
+          }
+          
+          .flex-outer li label,
+          .flex-outer li p {
+            padding: 8px;
+            font-weight: 300;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+          }
+          
+          .flex-outer > li > label,
+          .flex-outer li p {
+            flex: 1 0 125px;
+            max-width: 225px;
+          }
+          
+          .flex-outer > li > label + *,
+          .flex-inner {
+            flex: 1 0 225px;
+          }
+          
+          .flex-outer li p {
+            margin: 0;
+          }
+          
+          .flex-outer li input:not([type='checkbox']),
+          .flex-outer li textarea {
+            padding: 15px;
+            border: none;
+          }
+          
+          .flex-outer li button {
+            margin-left: 0px;
+            padding: 6px 12px;
+            border: none;
+            background: #333;
+            color: #f2f2f2;
+            text-transform: uppercase;
+            letter-spacing: .09em;
+            border-radius: 3px;
+          }
+          
+          .flex-inner li {
+            width: 80px;
+          }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Alex Leitch's Lab 4</h1>
+        </div>
+        <div class="wrapper">
+  
+
+<div class="container">
+    <form>
+      <ul class="flex-outer">
+        <li>
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="first_name">
+        </li>
+        <li>
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="last_name">
+        </li>
+        <li>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+        </li>
+        <li>
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone">
+        </li>
+        <li>
+          <label for="messages">Message</label>
+          <textarea rows="5" cols="33" id="messages" name="message"></textarea>
+        </li>
+        <li>
+          <p>Age</p>
+          <ul class="flex-inner">
+            <li>
+              <input type="checkbox" id="eighteen-to-thirtyfive" name="18-35">
+              <label for="eighteen-to-thirtyfive">18-35</label>
+            </li>
+            <li>
+              <input type="checkbox" id="thirtyfive-to-fifty" name="35-50">
+              <label for="thirtyfive-to-fifty">35-50</label>
+            </li>
+            <li>
+              <input type="checkbox" id="fifty-to-sixtyfive" name="50-65">
+              <label for="fifty-to-sixtyfive">50-65</label>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button type="submit" id="submit" name="button">Submit</button>
+        </li>
+      </ul>
+    </form>
+  </div>
+  
+  
+    </div>
+
+    </body>
+
+</html>
