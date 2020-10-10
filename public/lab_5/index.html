@@ -6,7 +6,7 @@
     </head>
 
     <body>
-        <h1>Alex Leitch's Lab 4 </h1>
+        <h1 class="header">Alex Leitch's Lab 4 </h1>
         <form>
             <ul class="flex-outer">
                 <li>
@@ -30,37 +30,59 @@
                     <textarea rows="5" cols="33" id="messages" name="message"></textarea>
                 </li>
                 <li>
-                    <ul class="flex-inner">
-                      <li>
-                        <input type="checkbox" id="eighteen-to-thirtyfive" name="18-35">
-                        <label for="eighteen-to-thirtyfive">18-35</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="thirtyfive-to-fifty" name="35-50">
-                        <label for="thirtyfive-to-fifty">35-50</label>
-                      </li>
-                      <li>
-                        <input type="checkbox" id="fifty-to-sixtyfive" name="50-65">
-                        <label for="fifty-to-sixtyfive">50-65</label>
-                      </li>
+                    <ul class="flex-inner" id="checkbox">
+                        <li>
+                            <div class="checkbox-list-label">
+                                <label for="checkbox">Ages</label>
+                            </div>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="eighteen-to-thirtyfive" name="18-35">
+                            <label for="eighteen-to-thirtyfive">18-35</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="thirtyfive-to-fifty" name="35-50">
+                            <label for="thirtyfive-to-fifty">35-50</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="fifty-to-sixtyfive" name="50-65">
+                            <label for="fifty-to-sixtyfive">50-65</label>
+                        </li>
                     </ul>
                 </li>
                 <li>
                     <button type="submit" id="submit" name="button">Submit</button>
                 </li>
                 <li>
-                    <button type="submit" id="activate" name="activate">Submit</button>
+                    <button type="button" onclick="testFunction()">Activate</button>
                 </li>
             </ul>
         </form>
-        <script src="main.js"></script>
-        function testFunction() {
-            fetch('/api')
-            .then((response) => response.text())
-            .then((response) => {
-                 console.log(response);
-            })
-       }
+        <script>
+            function testFunction() {
+                fetch('/api')
+                .then((response) => response.text())
+                .then((response) => {
+                    const body=document.querySelector('body');
+                    console.log(body);
+                    document.body.style.background = "blue";
+
+                    console.log(response);
+                    const Header=document.querySelector('h1');
+                    console.log(Header);
+                    Header.innerHTML="<h1>Lab 5 for Alex Leitch</h1>";
+
+                    const elements=document.querySelectorAll('.flex-inner li label')
+                    const fruitArray=['banana', 'orange', 'peach']
+                    elements.forEach((el, i) => {
+                        const text=el.innerText;
+                        console.log(el);
+                        el.innerText=fruitArray[i];
+                    })
+
+                })                
+            }
+        </script>
     </body>
 
 </html>
