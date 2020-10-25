@@ -1,7 +1,4 @@
 // You may wish to find an effective randomizer function on MDN.
-
-const { reverse } = require("cypress/types/lodash");
-
 function range(int) {
   const arr = [];
   for (let i = 0; i < int; i += 1) {
@@ -19,19 +16,9 @@ function sortFunction(a, b, key) {
   return 0;
 }
 
-async function handleEvent(evt) {
-  const results= await fetch('/api');
-  const json=results.json();
-  console.log('jsonFromServer', json);
-  const reverseList=json.sort((a,b)=>sortFunction(b,a,'name'));
-
-  reverseList.array.forEach(element=> {
-    const li=document.createElement('li')
-    document.append(li);
-  })
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min) + 1) + Math.ceil(min));
 }
-
-//const element = await(await arrayPromise()).split(' ');
 
 document.body.addEventListener('submit', async (e) => {
   e.preventDefault(); // this stops whatever the browser wanted to do itself.
@@ -45,19 +32,24 @@ document.body.addEventListener('submit', async (e) => {
   })
     .then((fromServer) => fromServer.json())
     .then((fromServer) => {
-      console.log('jsonFromServer', jsonFromServer);
-      const reverseList=newArr2.sort((a,b)=>sortFunction(b,a,'name'));
-      
-      //.catch((err)) => {
-      //  console.log(err)
-      //}
       if (document.querySelector('.flex-inner')) {
         document.querySelector('.flex-inner').remove();
       }
-      const newArr=range(10);
-      const newArr2=newArr.map(() => {
-        const number=getRandomIntInclusive(0,243);
+      const newArr = range(10);
+      const newArr2 = newArr.map(() => {
+        const number = getRandomIntInclusive(0, 243);
         return fromServer[number];
+      });
+      const reverseList = newArr2.sort((a, b) => sortFunction(b, a, 'name'));    
+      const ul = document.createElement('ul');
+      ul.className = 'flex-inner';
+      $('form').prepend(ul);
+
+      reverseList.forEach((el, i) => {
+        const li = document.createElement('li');
+        $(li).append(`<input type="checkbox" value=${el.code} />`);
+        $(li).append(`<label for=${el.code}>${el.name}</label>`);
+        $(ul).append(li);
       });
     })
     .catch((err) => console.log(err));
