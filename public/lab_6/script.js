@@ -31,7 +31,7 @@ async function handleEvent(evt) {
   })
 }
 
-const element = await(await arrayPromise()).split(' ');
+//const element = await(await arrayPromise()).split(' ');
 
 document.body.addEventListener('submit', async (e) => {
   e.preventDefault(); // this stops whatever the browser wanted to do itself.
