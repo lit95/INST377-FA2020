@@ -1,4 +1,8 @@
 // You may wish to find an effective randomizer function on MDN.
+function getRandomIntInclusive(min, max) {
+  return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min) + 1) + Math.ceil(min));
+}
+
 function range(int) {
   const arr = [];
   for (let i = 0; i < int; i += 1) {
@@ -14,10 +18,6 @@ function sortFunction(a, b, key) {
     return 1;
   }
   return 0;
-}
-
-function getRandomIntInclusive(min, max) {
-  return Math.floor(Math.random() * (Math.ceil(max) - Math.ceil(min) + 1) + Math.ceil(min));
 }
 
 document.body.addEventListener('submit', async (e) => {
@@ -40,7 +40,7 @@ document.body.addEventListener('submit', async (e) => {
         const number = getRandomIntInclusive(0, 243);
         return fromServer[number];
       });
-      const reverseList = newArr2.sort((a, b) => sortFunction(b, a, 'name'));    
+      const reverseList = newArr2.sort((a, b) => sortFunction(b, a, 'name'));
       const ul = document.createElement('ul');
       ul.className = 'flex-inner';
       $('form').prepend(ul);
